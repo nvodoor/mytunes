@@ -35,4 +35,16 @@ describe('SongQueueView', function() {
     expect(view.render).to.have.been.called;
   });
 
+  it('removes the song', function() {
+    removeSpy = sinon.spy(SongQueue.prototype, 'remove');
+    var songQueue = new SongQueue(fakeSongs);
+    songQueue.at(0).dequeue();
+    expect(removeSpy).to.have.been.called;
+    SongQueue.prototype.remove.restore();
+  });
+
+  it('should have a length of zero after being rendered for the first time', function() {
+    view = new SongQueueView({ collection: fakeSongs });
+    expect(view.$el.children().length).to.equal(0);
+  });
 });
