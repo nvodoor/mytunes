@@ -22,4 +22,4 @@ var SongQueueView = Backbone.View.extend({
 //     this.$el.append(entryView.$el);
 //   }
 
- });
+});
